@@ -1,14 +1,29 @@
 {
+    "exclude": [
+        "node_modules",
+        ".cache",
+        "public"
+    ],
     "compilerOptions": {
-        "outDir": "./dist/",
-        "sourceMap": true,
-        "noImplicitAny": true,
         "module": "commonjs",
         "target": "esnext",
-        "jsx": "react",
-        "lib": ["dom", "es2015", "es2017"]
-    },
-    "include": [
-        "./src/**/*"
-    ]
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "jsx": "preserve",
+        "types": [
+            "node",
+            "react",
+            "jest"
+        ],        
+        "strict": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "noEmit": true,
+        "typeRoots": [
+            "./node_modules/@types",
+            "./src/type-definitions"
+        ]
+    }
 }
