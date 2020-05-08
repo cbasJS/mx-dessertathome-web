@@ -41,11 +41,13 @@ resources:
               Principal:
                 CononicalUser: !GetAtt
                 DessertsAtHomeWebCloudFrontOriginAccessIdentity.S3CanonicalUserId
-              Action: s3.GetObject
+              Action: s3:GetObject
               Resource:
                 !Join ['', ['arn:aws:s3:::', !Ref DessertsAtHomeWebBucket, /*]]
             - Effect: Allow
-              Principal: s3.ListBucket
+              CanonicalUser: !GetAtt 
+              DessertsAtHomeWebCloudFrontOriginAccessIdentity.S3CanonicalUserId
+              Action: s3:ListBucket
               Resource:
                 !Join ['', ['arn:aws:s3:::', !Ref DessertsAtHomeWebBucket]]
     DessertsAtHomeDistribution:
