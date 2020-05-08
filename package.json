@@ -44,6 +44,7 @@
     "@types/react-responsive": "^8.0.2",
     "@types/styled-components": "^5.1.0",
     "babel-preset-gatsby": "^0.4.0",
-    "gatsby-plugin-eslint": "^2.0.8"
+    "gatsby-plugin-eslint": "^2.0.8",
+    "serverless": "^1.70.0"
   }
 }

@@ -39,14 +39,13 @@ resources:
           Statement:
             - Effect: Allow
               Principal:
-                CononicalUser: !GetAtt
-                DessertsAtHomeWebCloudFrontOriginAccessIdentity.S3CanonicalUserId
+                CanonicalUser: !GetAtt DessertsAtHomeWebCloudFrontOriginAccessIdentity.S3CanonicalUserId
               Action: s3:GetObject
               Resource:
                 !Join ['', ['arn:aws:s3:::', !Ref DessertsAtHomeWebBucket, /*]]
             - Effect: Allow
-              CanonicalUser: !GetAtt 
-              DessertsAtHomeWebCloudFrontOriginAccessIdentity.S3CanonicalUserId
+              Principal:
+                CanonicalUser: !GetAtt DessertsAtHomeWebCloudFrontOriginAccessIdentity.S3CanonicalUserId
               Action: s3:ListBucket
               Resource:
                 !Join ['', ['arn:aws:s3:::', !Ref DessertsAtHomeWebBucket]]
