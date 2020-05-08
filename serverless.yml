@@ -67,7 +67,7 @@ resources:
           Aliases:
             - ${self:custom.domain.${self:provider.stage}}
           ViewerCertificate:
-            AcmCertificateArn: arn:aws:acm:us-east-1:139557914541:certificate/8aad4bcc-7dc0-43c4-8f30-25fa51f922fd
+            AcmCertificateArn: arn:aws:acm:us-east-1:139557914541:certificate/f7e37819-b5b0-4301-9351-5b9f26468282
             SslSupportMethod: sni-only
             MinimumProtocolVersion: TLSv1.1_2016
           DefaultCacheBehavior:
