@@ -8,6 +8,8 @@ then
 else
   while sleep 60s; do echo "Waiting. Time elapsed: $SECONDS seconds"; done &
   yarn run deploy:dev
-  aws s3 rm s3://$AWS_S3_BUCKET --recursive && aws s3 cp ./public s3://$AWS_S3_BUCKET --recursive && aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID --paths '/*'
+  yarn run deploy:dev:app
+  aws s3 rm s3://$AWS_S3_BUCKET --recursive
+  aws s3 cp ./public s3://$AWS_S3_BUCKET --recursive
   kill %1
 fi

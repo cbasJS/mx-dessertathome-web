@@ -26,7 +26,7 @@ before_deploy:
 
 deploy:
   - provider: script
-    script: travis/bin/deploy.sh
+    script: travis/bin/deploy.sh $AWS_S3_BUCKET
     skip_cleanup: true
     on:
       all_branches: true
