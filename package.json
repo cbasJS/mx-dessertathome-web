@@ -3,15 +3,23 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "gatsby build",
+    "start": "gatsby develop",
     "develop": "gatsby develop",
-    "deploy:dev": "sls deploy",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "type-check": "tsc",
+    "type-check:watch": "tsc --watch",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "coverage": "jest --coverage",
+    "deploy:dev": "yarn deploy:dev:infra;",
+    "deploy:dev:infra": "sls deploy --stage dev",
+    "deploy:dev:app": "gatsby clean && gatsby build",
     "deploy:prod": "sls deploy --stage prod"
   },
   "dependencies": {
-    "@apollo/client": "^3.0.0-beta.44",
     "@apollo/react-hooks": "^3.1.5",
-    "@types/node": "^8.0.7",
     "apollo-boost": "^0.4.7",
     "cross-fetch": "^3.0.4",
     "gatsby": "^2.21.11",
@@ -38,13 +46,16 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.9.0",
     "@silvermine/serverless-plugin-cloudfront-lambda-edge": "^2.1.1",
+    "@types/jest": "^25.2.1",
     "@types/lodash": "^4.14.150",
     "@types/react-dom": "^16.9.7",
     "@types/react-helmet": "^5.0.15",
     "@types/react-responsive": "^8.0.2",
     "@types/styled-components": "^5.1.0",
+    "babel-jest": "^26.0.1",
     "babel-preset-gatsby": "^0.4.0",
     "gatsby-plugin-eslint": "^2.0.8",
+    "jest": "^26.0.1",
     "serverless": "^1.70.0"
   }
 }

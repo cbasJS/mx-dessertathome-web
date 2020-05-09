@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'mx-dessertathome-web',
   },
-  plugins: [      
+  plugins: [
     {
       resolve: 'gatsby-source-shopify',
       options: {
@@ -30,12 +30,13 @@ module.exports = {
         start_url: '/',
         background_color: '#fff',
         theme_color: '#fff',
-        display: 'standalone'        
+        display: 'standalone'
       }
-    },      
+    },
     'gatsby-plugin-offline',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-typescript'
   ],
 }

@@ -14,7 +14,7 @@ install:
 
 script:
   - test $TRAVIS_BRANCH = "master" && GATSBY_ACTIVE_ENV=production || GATSBY_ACTIVE_ENV=staging
-  - GATSBY_ACTIVE_ENV=$GATSBY_ACTIVE_ENV yarn run build
+  - GATSBY_ACTIVE_ENV=$GATSBY_ACTIVE_ENV
 
 before_deploy:
   - export SCRIPT_COUNTER=$(($SCRIPT_COUNTER+1))
@@ -44,5 +44,4 @@ after_deploy:
   - >
     if (( $DEPLOYMENTS_COUNTER == 2 )); then
       aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
-      bash <(curl -s https://codecov.io/bash)
     fi

@@ -1,29 +1,15 @@
 {
-    "exclude": [
-        "node_modules",
-        ".cache",
-        "public"
-    ],
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "esnext",
-        "lib": [
-            "esnext",
-            "dom"
-        ],
-        "jsx": "preserve",
-        "types": [
-            "node",
-            "react",
-            "jest"
-        ],        
-        "strict": true,
-        "resolveJsonModule": true,
-        "esModuleInterop": true,
-        "noEmit": true,
-        "typeRoots": [
-            "./node_modules/@types",
-            "./src/type-definitions"
-        ]
-    }
+  "exclude": ["node_modules", ".cache", "public"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "lib": ["esnext", "dom"],
+    "jsx": "preserve",
+    "types": ["node", "react", "jest"],
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "typeRoots": ["./node_modules/@types", "./src/type-definitions"]
+  }
 }
