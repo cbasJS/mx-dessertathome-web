@@ -8,14 +8,14 @@
     "build": "gatsby build",
     "serve": "gatsby serve -p ${PORT:-9000}",
     "clean": "gatsby clean",
-    "type-check": "tsc",
-    "type-check:watch": "tsc --watch",
+    "ts:check": "tsc",
+    "ts:check:watch": "tsc --watch",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "coverage": "jest --coverage",
-    "deploy": "yarn deploy:infra; yarn deploy:app; yarn deploy:app:aws",
+    "build:app": "gatsby clean && gatsby build",
+    "deploy": "yarn deploy:infra; yarn deploy:app:aws",
     "deploy:infra": "sls deploy --stage ${STAGE:-dev}",
-    "deploy:app": "gatsby clean && gatsby build",
     "deploy:app:aws": "aws s3 rm s3://$AWS_S3_BUCKET --recursive && aws s3 cp ./public s3://$AWS_S3_BUCKET --recursive && aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID --paths '/'"
   },
   "dependencies": {
