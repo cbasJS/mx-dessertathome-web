@@ -6,17 +6,17 @@
     "start": "gatsby develop",
     "develop": "gatsby develop",
     "build": "gatsby build",
-    "serve": "gatsby serve",
+    "serve": "gatsby serve -p ${PORT:-9000}",
     "clean": "gatsby clean",
     "type-check": "tsc",
     "type-check:watch": "tsc --watch",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "coverage": "jest --coverage",
-    "deploy:dev": "yarn deploy:dev:infra;",
-    "deploy:dev:infra": "sls deploy --stage dev",
-    "deploy:dev:app": "gatsby clean && gatsby build",
-    "deploy:prod": "sls deploy --stage prod"
+    "deploy": "yarn deploy:infra; yarn deploy:app; yarn deploy:app:s3",
+    "deploy:infra": "sls deploy --stage ${STAGE:-dev}",
+    "deploy:app": "gatsby clean && gatsby build",
+    "deploy:app:s3": "aws s3 rm s3://$AWS_S3_BUCKET --recursive && aws s3 cp ./public s3://$AWS_S3_BUCKET --recursive && aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID --paths '/'"
   },
   "dependencies": {
     "@apollo/client": "^3.0.0-beta.44",

@@ -7,9 +7,6 @@ then
   kill %1
 else
   while sleep 60s; do echo "Waiting. Time elapsed: $SECONDS seconds"; done &
-  yarn run deploy:dev
-  yarn run deploy:dev:app
-  aws s3 rm s3://$AWS_S3_BUCKET --recursive
-  aws s3 cp ./public s3://$AWS_S3_BUCKET --recursive
+  STAGE=dev AWS_S3_BUCKET=$AWS_S3_BUCKET AWS_CLOUDFRONT_DISTRIBUTION_ID=$AWS_CLOUDFRONT_DISTRIBUTION_ID yarn deploy
   kill %1
 fi

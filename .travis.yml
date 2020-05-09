@@ -38,10 +38,3 @@ deploy:
     skip_cleanup: true
     on:
       all_branches: true
-
-after_deploy:
-  - export DEPLOYMENTS_COUNTER=$(($DEPLOYMENTS_COUNTER+1))
-  - >
-    if (( $DEPLOYMENTS_COUNTER == 2 )); then
-      aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
-    fi
