@@ -20,6 +20,16 @@ custom:
     dev: staging.postresadomicilio.mx
     prod: postresadomicilio.mx
 
+functions:
+  defaultDirectoryIndexes:
+    handler: aws/functions/handlers/defaultDirectoryIndexes/index.handler
+    runtime: nodejs10.x
+    memorySize: 128
+    timeout: 5
+    lambdaAtEdge:
+      - distribution: DessertsAtHomeDistribution
+        eventType: origin-request
+
 resources:
   Resources:
     DessertsAtHomeWebBucket:
@@ -80,7 +90,7 @@ resources:
             - ErrorCode: 400
               ErrorCachingMinTTL: 300
               ResponseCode: 200
-              ResponsePagePath: '/index.html'
+              ResponsePagePath: '/404.html'
             - ErrorCode: 404
               ErrorCachingMinTTL: 300
               ResponseCode: 200
@@ -90,4 +100,3 @@ resources:
               ResponseCode: 200
               ResponsePagePath: '/index.html'
 
-  
