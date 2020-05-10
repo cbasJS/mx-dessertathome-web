@@ -19,7 +19,6 @@
     "deploy:app:aws": "aws s3 rm s3://$AWS_S3_BUCKET --recursive && aws s3 cp ./public s3://$AWS_S3_BUCKET --recursive && aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID --paths '/'"
   },
   "dependencies": {
-    "@apollo/client": "^3.0.0-beta.44",
     "@apollo/react-hooks": "^3.1.5",
     "apollo-boost": "^0.4.7",
     "cross-fetch": "^3.0.4",
@@ -45,10 +44,12 @@
     "typescript": "^3.8.3"
   },
   "devDependencies": {
+    "@apollo/client": "^3.0.0-beta.44",
     "@babel/preset-typescript": "^7.9.0",
     "@silvermine/serverless-plugin-cloudfront-lambda-edge": "^2.1.1",
     "@types/jest": "^25.2.1",
     "@types/lodash": "^4.14.150",
+    "@types/query-string": "^6.3.0",
     "@types/react-dom": "^16.9.7",
     "@types/react-helmet": "^5.0.15",
     "@types/react-responsive": "^8.0.2",

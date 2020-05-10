@@ -1,14 +1,55 @@
-module.exports = {
+// Packages
+const _ = require('lodash')
+
+// Assets
+const baseConfig = require('./src/data/config/environments/base.json')
+const developmentConfig = require('./src/data/config/environments/development.json')
+const productionConfig = require('./src/data/config/environments/production.json')
+const stagingConfig = require('./src/data/config/environments/staging.json')
+
+const configs = {
+  development: _.merge({}, baseConfig, developmentConfig),
+  staging: _.merge({}, baseConfig, developmentConfig, stagingConfig),
+  production: _.merge({}, baseConfig, developmentConfig, stagingConfig, productionConfig)
+}
+
+const environment = process.env.GATSBY_ACTIVE_ENV || 'development'
+
+const config = configs[environment]
+
+const gatsbyConfig = {
   siteMetadata: {
-    title: 'mx-dessertathome-web',
+    title: 'mx-beerhouse',
   },
   plugins: [
     {
       resolve: 'gatsby-source-shopify',
       options: {
-        shopName: 'dessert-at-home',
-        accessToken: '25b87c0c6be6c70a4ed8d89f07e148a2',
-        includeCollections: ['shop']
+        shopName: config.shopify.subdomain,
+        accessToken: config.shopify.accessToken,
+        verbose: true,
+        apiVersion: config.shopify.apiVersion,
+        paginationSize: 50,
+        includeCollections: config.shopify.includeCollections
+      }
+    },
+    {
+      resolve: 'gatsby-source-prismic-graphql',
+      options: {
+        repositoryName: config.prismic.repositoryName
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-page-creator',
+      options: {
+        path: `${__dirname}/src/pages`,
+        ignore: ['styledComponents.ts']
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        test: /\.js$|\.jsx$|\.ts$|\.tsx$/
       }
     },
     'gatsby-plugin-typescript',
@@ -16,10 +57,24 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-apollo',
       options: {
-        uri: 'https://dessert-at-home.myshopify.com/api/graphql',
+        uri: `https://${config.shopify.subdomain}.myshopify.com/api/graphql`,
         headers: {
-          'X-Shopify-Storefront-Access-Token': '25b87c0c6be6c70a4ed8d89f07e148a2'
+          'X-Shopify-Storefront-Access-Token': config.shopify.accessToken
         }
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: config.app.url,
+        sitemap: `${config.app.url}/sitemap.xml`,
+        policy: config.environment === 'production' ?
+          [
+            { userAgent: '*', disallow: '/' }
+          ] :
+          [
+            { userAgent: '*', disallow: '/' }
+          ]
       }
     },
     {
@@ -30,13 +85,15 @@ module.exports = {
         start_url: '/',
         background_color: '#fff',
         theme_color: '#fff',
-        display: 'standalone'
+        display: 'standalone',
+        // icon: ''
       }
     },
     'gatsby-plugin-offline',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-typescript'
+    'gatsby-plugin-react-helmet'
   ],
 }
+
+module.exports = gatsbyConfig

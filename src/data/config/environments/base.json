@@ -1,0 +1,14 @@
+{
+  "app": {
+    "url": "postresadomicilio.mx"
+  },
+  "prismic": {
+    "repositoryName": "mx-dessertathome-web"
+  },
+  "shopify": {
+    "apiVersion": "2020-01",
+    "includeCollections": ["shop"],
+    "subdomain": "dessert-at-home",
+    "accessToken": "25b87c0c6be6c70a4ed8d89f07e148a2"
+  }
+}
