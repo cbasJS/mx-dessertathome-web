@@ -15,7 +15,7 @@ const BaseStyles = createGlobalStyle<{theme: ThemeType}> `${({ theme }) => `
 
   html {
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: ${theme.font.sizes.small};
     font-weight: ${theme.font.weights.normal};
     line-height: 1;

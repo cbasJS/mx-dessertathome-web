@@ -2,6 +2,7 @@ const theme = {
   colors: {
     white: '#fff',
     black: '#000',
+    brown: '#542405',
     primary: '',
     secondary: '',
     tertiary: '',
@@ -32,9 +33,9 @@ const theme = {
       large: 1.7
     },
     sizes: {
-      small: '14px',
-      medium: '15px',
-      large: '16px'
+      small: 14,
+      medium: 15,
+      large: 16
     },
     weights: {
       normal: 400,
@@ -44,12 +45,12 @@ const theme = {
   }
 }
 
-theme.colors.primary = theme.colors.white
+theme.colors.primary = theme.colors.brown
 theme.colors.secondary = theme.colors.white
 theme.colors.tertiary = theme.colors.white
 theme.colors.quaternary = theme.colors.white
 theme.colors.background = theme.colors.white
-theme.colors.font = theme.colors.black
+theme.colors.font = theme.colors.primary
 
 type ThemeType = typeof theme
 
