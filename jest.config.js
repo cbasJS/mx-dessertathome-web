@@ -6,10 +6,7 @@ module.exports = {
   globals: { __PATH_PREFIX__: '' },
   setupFiles: ['<rootDir>/jest/loadershim.js'],
   testRegex: '/src/.+\\.test\\.[jt]sx?$',
-  collectCoverageFrom: [
-    'src/logic/**/*.[jt]s',
-    'src/utilities/**/*.[jt]s'
-  ],
+  collectCoverageFrom: ['src/utilities/**/*.[jt]s'],
   coverageReporters: ['json', 'lcov', 'text', 'clover', 'html'],
   coverageThreshold: {
     global: {
