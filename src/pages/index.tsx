@@ -1,10 +1,17 @@
+// Packages
 import React from 'react'
 
+// Styled components
 import { StyledIndexPage } from './styledComponents'
+
+// Components
+import AppLayout from '../layouts/AppLayout'
 
 const IndexPage: React.FC = () => {
   return (
-    <StyledIndexPage>Index page</StyledIndexPage>
+    <AppLayout>
+      <StyledIndexPage>Index page</StyledIndexPage>
+    </AppLayout>
   )
 }
 
