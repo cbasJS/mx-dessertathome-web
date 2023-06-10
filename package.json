@@ -22,7 +22,7 @@
     "@apollo/react-hooks": "^3.1.5",
     "apollo-boost": "^0.4.7",
     "cross-fetch": "^3.0.4",
-    "gatsby": "^2.21.11",
+    "gatsby": "^4.25.7",
     "gatsby-plugin-apollo": "^3.0.1",
     "gatsby-plugin-manifest": "^2.4.1",
     "gatsby-plugin-offline": "^3.2.0",
